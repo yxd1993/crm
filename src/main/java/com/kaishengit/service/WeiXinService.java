@@ -34,6 +34,7 @@ public class WeiXinService{
     private final String ACCESS_TOKEN_URL = "https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid={0}&corpsecret={1}";
     private final String CREATE_USER_URL = "https://qyapi.weixin.qq.com/cgi-bin/user/create?access_token={0}";
     private final String DEL_USER_URL = "https://qyapi.weixin.qq.com/cgi-bin/user/delete?access_token={0}&userid={1}";
+    private final String USE_CODE_GET_USERID = "https://qyapi.weixin.qq.com/cgi-bin/user/getuserinfo?access_token={0}&code={1}";
 
     private LoadingCache<String,String> accessTokenCache = CacheBuilder.newBuilder()
             .maximumSize(10)
@@ -368,4 +369,30 @@ public class WeiXinService{
         }
 
     }
+
+    /**
+     * 通过菜单OAUTH验证中的code，获取userid
+     */
+    public String useCodeGetUserId(String code) {
+        try {
+            String accessToken = accessTokenCache.get("");
+            String url = MessageFormat.format(USE_CODE_GET_USERID,accessToken,code);
+
+            String result = HttpUtil.getString(url);
+            Map<String,Object> resultMap = new Gson().fromJson(result,HashMap.class);
+            if(resultMap == null || resultMap.containsKey("errcode")) {
+                String errorCode = Integer.valueOf(Double.valueOf(resultMap.get("errcode").toString()).intValue()).toString();
+                throw new WeiXinException("通过Code获取UserID异常:" + errorCodeMap.get(errorCode));
+            }
+            return result;
+        } catch (ExecutionException e) {
+            throw new WeiXinException("从AccessTokenCache中获取值异常");
+        }
+
+    }
+
+
+
+
+
 }

@@ -62,6 +62,9 @@
     <select id="findById" resultType="com.kaishengit.pojo.User">
         SELECT * FROM t_user WHERE id = #{id}
     </select>
+    <select id="findByUserId" resultType="com.kaishengit.pojo.User">
+        SELECT * FROM t_user WHERE userid = #{userId}
+    </select>
 
     <resultMap id="userMap" type="User">
         <id column="id" property="id"/>

@@ -182,4 +182,22 @@ public class CustomerService {
     public List<Map<String, Object>> homeTotal() {
         return customerMapper.findTotal();
     }
+
+    /**
+     * 获取userId对应客户
+     * @param id
+     * @return
+     */
+    public List<Customer> findCustomerByUserId(Integer id) {
+        return customerMapper.findByUserIdAndEmptyUserId(id);
+    }
+
+    /**
+     * 在微信中查询客户
+     * @param id
+     * @return
+     */
+    public Customer findCustById(Integer id) {
+        return  customerMapper.findById(id);
+    }
 }

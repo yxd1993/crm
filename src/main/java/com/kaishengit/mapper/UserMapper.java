@@ -71,4 +71,11 @@ public interface UserMapper {
      * @return
      */
     User findById(Integer userId);
+
+    /**
+     * 根据微信中的UserID查询用户信息
+     * @param userId
+     * @return
+     */
+    User findByUserId(String userId);
 }

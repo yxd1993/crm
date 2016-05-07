@@ -118,4 +118,13 @@ public class UserService {
         //修改用户
         userMapper.editUser(user);
     }
+
+    /**
+     * 根据微信的UserID获取用户信息
+     * @param userId
+     * @return
+     */
+    public User findByUserId(String userId) {
+        return userMapper.findByUserId(userId);
+    }
 }
