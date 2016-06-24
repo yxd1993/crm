@@ -6,25 +6,25 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!--定义JobDetail-->
-    <bean id="jobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <!--<bean id="jobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
         <property name="targetObject" ref="myJob"/>
         <property name="targetMethod" value="sayHello"/>
-    </bean>
+    </bean>-->
 
     <!--定义Triggle-->
-    <bean id="cronTriggerBean" class="org.springframework.scheduling.quartz.CronTriggerBean">
+    <!--<bean id="cronTriggerBean" class="org.springframework.scheduling.quartz.CronTriggerBean">
         <property name="jobDetail" ref="jobDetail"/>
         <property name="cronExpression" value="0/5 * * * * ? *"/>
-    </bean>
+    </bean>-->
 
     <!--定义调度器-->
-    <bean id="scheduler" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+    <!--<bean id="scheduler" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
         <property name="triggers">
             <list>
                 <ref bean="cronTriggerBean"/>
             </list>
         </property>
-    </bean>
+    </bean>-->
 
 
 </beans>
