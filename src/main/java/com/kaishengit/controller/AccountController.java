@@ -20,7 +20,8 @@ import java.util.Map;
 @RequestMapping("/account")
 public class AccountController {
 
-	//注释理解
+	//注释理解主支测试
+	//分支合并到
     @Inject
     private UserService userService;
 
