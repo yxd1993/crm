@@ -20,7 +20,7 @@ import java.util.Map;
 @RequestMapping("/account")
 public class AccountController {
 
-	//注释
+	//注释理解
     @Inject
     private UserService userService;
 
