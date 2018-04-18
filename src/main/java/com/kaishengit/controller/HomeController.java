@@ -1,9 +1,10 @@
 package com.kaishengit.controller;
 
-import com.google.gson.Gson;
-import com.kaishengit.dto.Message;
-import com.kaishengit.pojo.User;
-import com.kaishengit.service.CustomerService;
+import java.util.List;
+import java.util.Map;
+
+import javax.inject.Inject;
+
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
@@ -19,9 +20,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.inject.Inject;
-import java.util.List;
-import java.util.Map;
+import com.google.gson.Gson;
+import com.kaishengit.dto.Message;
+import com.kaishengit.pojo.User;
+import com.kaishengit.service.CustomerService;
 
 @Controller
 public class HomeController {
